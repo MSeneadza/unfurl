@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
                           The returned string will consist of all elements of the matrix ordered in a clockwise spiral
                           pattern starting with element [0, 0].  Each letter will be converted to lowercase and separated
                           by a single whitespace character.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/MSeneadza/unfurl"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
