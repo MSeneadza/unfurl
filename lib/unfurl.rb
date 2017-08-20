@@ -1,5 +1,5 @@
 require "unfurl/version"
 
-module Unfurl
+class Unfurl
   # Your code goes here...
 end
