@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "unfurl"
+require 'unfurl/matrix_turner'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
