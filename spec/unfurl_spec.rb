@@ -1,7 +1,6 @@
 require "spec_helper"
 
 RSpec.describe Unfurl do
-
   it "can unfurl a small matrix" do
     input = [['A', 'B'],
              ['C', 'D']]

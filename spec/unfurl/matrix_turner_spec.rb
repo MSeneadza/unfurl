@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe MatrixTurner do
-
   it 'can rotate a small matrix 90 degrees counter-clockwise' do
     input = [['A', 'B'], ['C', 'D']]
     expect(MatrixTurner.new(input).turn).to eq([['B', 'D'], ['A', 'C']])
