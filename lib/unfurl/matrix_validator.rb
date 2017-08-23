@@ -6,7 +6,7 @@ class MatrixValidator
   def validate
     result = { success: true, messages: [] }
     validate_not_empty(result)
-    return result if result[:success] == false
+    return result if !result[:success]
     validate_shape(result)
     validate_data_type(result)
     result
