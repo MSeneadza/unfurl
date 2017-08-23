@@ -15,7 +15,7 @@ class Unfurl
       result = unfurl(@matrix)
       @outputter.new(result).print
     else
-      validation_result[:messages].join(' ')
+      'Invalid input.  Please correct the following: ' << validation_result[:messages].join(' ')
     end
   end
 
