@@ -29,12 +29,13 @@ class MatrixValidator
   def validate_data_type(result)
     single_capital_alpha_char = /[A-Z]/
 
-    flattened_matrix = @matrix.flatten
+    flattened_matrix = @matrix.flatten(1)
     non_cap_alpha_chars = flattened_matrix.select { |cell| cell !~ single_capital_alpha_char }
     nil_chars = flattened_matrix.select { |cell| cell.nil? }
+    non_string_chars = flattened_matrix.select { |cell| cell.class != String }
     non_single_chars = flattened_matrix.select { |cell| cell.size > MAX_VALID_CHARS } if nil_chars.empty?
 
-    invalid_data = !non_cap_alpha_chars.empty? || !non_single_chars.empty?
+    invalid_data = !non_cap_alpha_chars.empty? || !non_single_chars.empty? || !non_string_chars.empty?
 
     if invalid_data
       result[:success] = false
