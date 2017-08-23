@@ -13,7 +13,6 @@ RSpec.describe MatrixValidator do
     input = [['A', 'B'],
              ['C', 'D']]
     result = MatrixValidator.new(input).validate
-    puts result
     expect(result[:messages].empty?).to eq(true)
   end
 
@@ -48,6 +47,46 @@ RSpec.describe MatrixValidator do
              ['C', 'D']]
     result = MatrixValidator.new(input).validate
     message_found = result[:messages].detect {|cell| cell == 'All rows in the matrix must contain the same number of elements.'}
+    expect(message_found).to be_truthy
+  end
+
+  it 'can can identify invalid, lowercase input' do
+    input = [['a', 'B'],
+             ['C', 'D']]
+    result = MatrixValidator.new(input).validate
+    expect(result[:success]).to eq(false)
+
+    message_found = result[:messages].detect {|cell| cell == 'Every member of the matrix must be a single uppercase English letter.'}
+    expect(message_found).to be_truthy
+  end
+
+  it 'can can identify invalid, numeric input' do
+    input = [['A', 'B'],
+             ['3', 'D']]
+    result = MatrixValidator.new(input).validate
+    expect(result[:success]).to eq(false)
+
+    message_found = result[:messages].detect {|cell| cell == 'Every member of the matrix must be a single uppercase English letter.'}
+    expect(message_found).to be_truthy
+  end
+
+  it 'can can identify invalid, multi-character input' do
+    input = [['A', 'B'],
+             ['CC', 'D']]
+    result = MatrixValidator.new(input).validate
+    expect(result[:success]).to eq(false)
+
+    message_found = result[:messages].detect {|cell| cell == 'Every member of the matrix must be a single uppercase English letter.'}
+    expect(message_found).to be_truthy
+  end
+
+  it 'can can identify invalid, non-English input' do
+    input = [['A', 'B'],
+             ['Ń', 'D']]
+    result = MatrixValidator.new(input).validate
+    expect(result[:success]).to eq(false)
+
+    message_found = result[:messages].detect {|cell| cell == 'Every member of the matrix must be a single uppercase English letter.'}
     expect(message_found).to be_truthy
   end
 end
