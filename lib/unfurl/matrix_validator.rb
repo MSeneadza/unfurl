@@ -1,4 +1,6 @@
 class MatrixValidator
+  MAX_VALID_CHARS = 1
+
   def initialize(matrix)
     @matrix = matrix
   end
@@ -16,9 +18,9 @@ class MatrixValidator
     single_capital_alpha_char = /[A-Z]/
 
     flattened_matrix = @matrix.flatten
-    non_cap_alpha_chars = flattened_matrix.select {|cell| cell !~ single_capital_alpha_char }
+    non_cap_alpha_chars = flattened_matrix.select { |cell| cell !~ single_capital_alpha_char }
 
-    non_single_chars = flattened_matrix.select {|cell| cell.size > 1}
+    non_single_chars = flattened_matrix.select { |cell| cell.size > MAX_VALID_CHARS }
 
     invalid_data = !non_cap_alpha_chars.empty? || !non_single_chars.empty?
 

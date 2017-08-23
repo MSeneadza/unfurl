@@ -4,7 +4,7 @@ class MatrixTurner
   end
 
   def turn
-    reversed = @matrix.collect {|elem| elem.reverse}
+    reversed = @matrix.collect(&:reverse)
     reversed.transpose
   end
 end
