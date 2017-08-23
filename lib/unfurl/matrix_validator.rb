@@ -18,7 +18,7 @@ class MatrixValidator
 
   def validate_array(result)
     is_array = @matrix.kind_of?(Array)
-    is_array = @matrix.first.kind_of?(Array) if is_array
+    is_array = @matrix.select {|cell| !cell.kind_of?(Array)}.empty? if is_array
     unless is_array
       result[:success] = false
       result[:messages] << 'Input must be a two-dimensional array.'

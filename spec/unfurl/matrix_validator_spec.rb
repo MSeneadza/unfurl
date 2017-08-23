@@ -81,6 +81,12 @@ RSpec.describe MatrixValidator do
     expect(result[:success]).to eq(false)
   end
 
+  it 'can identify nil input deep within the input' do
+    input = [['A'], nil]
+    result = MatrixValidator.new(input).validate
+    expect(result[:success]).to eq(false)
+  end
+
   describe 'invalid data input' do
     invalid_data_message = 'Every member of the matrix must be a single uppercase English letter.'
 
