@@ -2,6 +2,7 @@ require "bundler/setup"
 require "unfurl"
 require 'unfurl/matrix_turner'
 require 'unfurl/array_printer'
+require 'unfurl/matrix_validator'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
