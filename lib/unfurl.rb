@@ -4,12 +4,17 @@ class Unfurl
   def initialize(input_matrix)
     @matrix = input_matrix.dup # duplicating to prevent mutating the passed in matrix
     @outputter = ArrayPrinter
+    @validator = MatrixValidator.new(input_matrix)
   end
 
   def process
-    #validate input
-    result = unfurl(@matrix)
-    @outputter.new(result).print
+    validation_result = @validator.validate
+    if validation_result[:success]
+      result = unfurl(@matrix)
+      @outputter.new(result).print
+    else
+      validation_result[:messages].join(' ')
+    end
   end
 
   def unfurl(matrix)
