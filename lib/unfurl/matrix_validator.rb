@@ -7,10 +7,21 @@ class MatrixValidator
 
   def validate
     result = { success: true, messages: [] }
+    validate_array(result)
+    return result unless result[:success]
     validate_not_empty(result)
     return result unless result[:success]
     validate_shape(result)
     validate_data_type(result)
+    result
+  end
+
+  def validate_array(result)
+    is_array = @matrix.kind_of?(Array)
+    unless is_array
+      result[:success] = false
+      result[:messages] << 'Input must be a two-dimensional array.'
+    end
     result
   end
 

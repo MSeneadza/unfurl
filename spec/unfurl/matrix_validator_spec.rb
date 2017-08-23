@@ -49,6 +49,19 @@ RSpec.describe MatrixValidator do
     expect(message_found).to be_truthy
   end
 
+  it 'can identify non-array input' do
+    input = nil
+    result = MatrixValidator.new(input).validate
+    expect(result[:success]).to eq(false)
+  end
+
+  it 'can return the proper message for non-array input' do
+    input = 'a,b,c,d'
+    result = MatrixValidator.new(input).validate
+    message_found = result[:messages].detect { |cell| cell == 'Input must be a two-dimensional array.' }
+    expect(message_found).to be_truthy
+  end
+
   describe 'invalid data input' do
     invalid_data_message = 'Every member of the matrix must be a single uppercase English letter.'
 
