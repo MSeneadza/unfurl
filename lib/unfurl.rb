@@ -3,12 +3,13 @@ require 'unfurl/version'
 class Unfurl
   def initialize(input_matrix)
     @matrix = input_matrix.dup # duplicating to prevent mutating the passed in matrix
+    @outputter = ArrayPrinter
   end
 
   def process
     #validate input
     result = unfurl(@matrix)
-    print(result)
+    @outputter.new(result).print
   end
 
   def unfurl(matrix)
@@ -19,9 +20,5 @@ class Unfurl
       result << unfurl(rotated_matrix)
     end
     result.flatten
-  end
-
-  def print(unfurled_matrix)
-    unfurled_matrix.map(&:downcase).join(' ')
   end
 end
