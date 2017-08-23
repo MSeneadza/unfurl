@@ -20,6 +20,9 @@ RSpec.describe Unfurl do
   end
 
   it 'can properly format its output' do
-    # lower case and space it
+    input = [['A', 'B', 'C', 'D'],
+             ['E', 'F', 'G', 'H'],
+             ['I', 'J', 'K', 'L']]
+    expect(Unfurl.new(input).process).to eq('a b c d h l k j i e f g')
   end
 end
