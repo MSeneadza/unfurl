@@ -5,7 +5,7 @@ require "unfurl/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "unfurl"
-  spec.version       = Unfurl::VERSION
+  spec.version       = "0.1.0"
   spec.authors       = ["Michael Seneadza"]
   spec.email         = ["mseneadza@alumni.stanford.edu"]
 
