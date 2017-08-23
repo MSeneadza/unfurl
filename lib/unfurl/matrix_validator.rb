@@ -18,6 +18,7 @@ class MatrixValidator
 
   def validate_array(result)
     is_array = @matrix.kind_of?(Array)
+    is_array = @matrix.first.kind_of?(Array) if is_array
     unless is_array
       result[:success] = false
       result[:messages] << 'Input must be a two-dimensional array.'
@@ -30,8 +31,8 @@ class MatrixValidator
 
     flattened_matrix = @matrix.flatten
     non_cap_alpha_chars = flattened_matrix.select { |cell| cell !~ single_capital_alpha_char }
-
-    non_single_chars = flattened_matrix.select { |cell| cell.size > MAX_VALID_CHARS }
+    nil_chars = flattened_matrix.select { |cell| cell.nil? }
+    non_single_chars = flattened_matrix.select { |cell| cell.size > MAX_VALID_CHARS } if nil_chars.empty?
 
     invalid_data = !non_cap_alpha_chars.empty? || !non_single_chars.empty?
 
