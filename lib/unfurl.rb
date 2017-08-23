@@ -1,4 +1,6 @@
-require 'unfurl/version'
+require 'unfurl/array_printer'
+require 'unfurl/matrix_turner'
+require 'unfurl/matrix_validator'
 
 class Unfurl
   def initialize(input_matrix)
