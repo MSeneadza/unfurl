@@ -51,5 +51,6 @@ class MatrixValidator
       end
     end
     result[:messages] << 'All rows in the matrix must contain the same number of elements.' if invalid_shape
+    result
   end
 end
