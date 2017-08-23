@@ -100,7 +100,7 @@ RSpec.describe MatrixValidator do
       expect(message_found).to be_truthy
     end
 
-    it 'can identify non-strings the input' do
+    it 'can identify non-strings in the input' do
       input = [['A'], [[]]]
       result = MatrixValidator.new(input).validate
       expect(result[:success]).to eq(false)
